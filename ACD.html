@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altameer Companies Database</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="container">
+    <div id="first-column">
+
+      <div id="tabs">
+        <Tab-button class="tab" data-container="companies-container">ألشركات</Tab-button>
+        <Tab-button class="tab" data-container="projects-container">المشاريع</Tab-button>
+        <Tab-button class="tab" data-container="members-container">الاعضاء</Tab-button>
+      </div>
+
+      <collectionlistcontainer id="projects-container">
+        <h2>المشاريع</h2>
+        <input type="text" id="project-search" placeholder="ابحث عن مشروع...">
+        <ul id="projects-container-list" class="LClist">
+        </ul>
+      </collectionlistcontainer>
+
+      <collectionlistcontainer id="companies-container">
+        <h2>ألشركات</h2>
+        <input type="text" id="company-search" placeholder="ابحث عن شركة...">
+        <ul id="companies-container-list" class="LClist">
+        </ul>
+      </collectionlistcontainer>
+      <collectionlistcontainer id="members-container">
+        <h2>الاعضاء</h2>
+        <input type="text" id="member-search" placeholder="ابحث عن عضو...">
+        <ul id="members-container-list" class="LClist"></ul>
+      </collectionlistcontainer>
+      <!-- Button to open the new collection modal -->
+      <btnscontainer>
+        <button id="addCompanyButton" onclick="openNewCompanyDocumentModal()">اضافة شركة</button>
+        <button id="addProjectButton" onclick="openNewProjectDocumentModal()">اضافة مشروع</button>
+        <button id="addMemberButton" onclick="openNewMemberDocumentModal()">اضافة عضو</button>
+      </btnscontainer>
+      <!-- Modal for creating a new collection -->
+      <div class="modal-overlay" id="new-company-document-modal">
+        <div class="modal">
+          <form id="new-company-document-form">
+            <label for="new-collection-name">:اسم الشركة</label>
+            <input type="text" id="new-company-document-name" required>
+            <label for="product-location">:عنوان الشركة</label>
+            <input type="text" id="company-location" required>
+            <label for="product-details">:شخص للتواصل</label>
+            <input type="text" id="company-details" required>
+            <label for="product-documents">:عضو مسؤول</label>
+            <input type="text" id="company-documents" required>
+            <label for="product-email">:بريد العضو المسؤول</label>
+            <input type="text" id="company-email" required>
+            <label for="product-contact-email">:بريد الشركة</label>
+            <input type="text" id="company-contact-email" required>
+            <label for="product-website">:موقع الشركة</label>
+            <input type="text" id="company-website" required>
+            <label for="company-additional-information">:معلومات إضافية</label>
+            <input type="text" id="company-additional-information" required>
+            <div id="modal-buttons">
+              <dbutton type="button" onclick="createNewCompanyDocument()">اضف</dbutton>
+              <dbutton type="button" onclick="closeNewCompanyDocumentModal()">الغاء</dbutton>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal for creating a new project document -->
+      <div class="modal-overlay" id="new-project-document-modal">
+        <div class="modal">
+          <form id="new-project-document-form">
+            <label for="new-project-document-name">:اسم المشروع</label>
+            <input type="text" id="new-project-document-name" required>
+            <label for="project-responsible-members">:أعضاء المشروع المسؤولين</label>
+            <select id="project-responsible-members" required></select>
+            <label for="project-details">:تفاصيل المشروع</label>
+            <textarea id="project-details" rows="5" required></textarea>
+            <div id="modal-buttons">
+              <dbutton type="button" onclick="createNewProjectDocument()">اضف</dbutton>
+              <dbutton type="button" onclick="closeNewProjectDocumentModal()">الغاء</dbutton>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Add the modal for اضافة عضو -->
+      <div class="modal-overlay" id="new-member-document-modal">
+        <div class="modal">
+          <form id="new-member-document-form">
+            <label for="new-member-document-name">:اسم العضو</label>
+            <input type="text" id="new-member-document-name" required>
+
+            <label for="new-member-contact-info">:معلومات الاتصال</label>
+            <input type="text" id="new-member-contact-info" required>
+
+            <label for="new-member-company">:الشركة</label>
+            <input type="text" id="new-member-company" required>
+
+            <label for="new-member-contact-email">:البريد الإلكتروني للاتصال</label>
+            <input type="text" id="new-member-contact-email" required>
+
+            <div id="modal-buttons">
+              <dbutton type="button" onclick="createNewMemberDocument()">اضف</dbutton>
+              <dbutton type="button" onclick="closeNewMemberDocumentModal()">الغاء</dbutton>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="second-column">
+      <div id="header-content">
+        <div id="logo"><img src="/TL.jpg" alt="Company Logo"></div>
+        <Abutton class="sticky-button" id="switchPaletteButton">CC</Abutton>
+        <h1>قاعدة بيانات الشركات المتعاقدة</h1>
+
+      </div>
+      <div id="content">البيانات تظهر هنا</div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
